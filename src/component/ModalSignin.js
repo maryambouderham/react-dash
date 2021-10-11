@@ -2,15 +2,24 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import USERS from '../data/Users'
 import AdminSpace from '../pages/AdminSpace';
+import { Credential } from '../models/Credentiel';
+// import "./login.css"
 const ModalSignin = () => {
-    const [credentials,setCredentials] = useState({})
+    const [credentials,setCredentials] = useState(new Credential())
+    const isFormValid = () =>
+    credentials.email!="_" 
+    && credentials.password!="_";
+
     const handleChangeInput =(e)=>{
-      let {name,value}=e.target
-      setCredentials({...credentials,[name]:value})
+      let { name, value } = e.target
+      setCredentials({ ...credentials, [name]: value })
     }
     const login =(e)=>{
       e.preventDefault()
-      if (!credentials.login) e.target.className="border border-danger"
+        if(isFormValid)
+        alert("login ...")
+        else
+        setCredentials({...new Credential("","")})
     }
     // const validerinput = () => {
      
@@ -39,11 +48,15 @@ const ModalSignin = () => {
   <div className="mb-3">
     <label htmlFor="exampleInputEmail1" className="form-label">Login:</label>
     <input type="email" name="login"  onChange={handleChangeInput} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+    <p className={credentials.email == "" ? "error" : "d-none"}>
+                Email Invalid !!</p>
     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
   </div>
   <div className="mb-3">
     <label htmlFor="exampleInputPassword1" className="form-label">Password:</label>
     <input type="password" name="password" onChange={handleChangeInput} className="form-control" id="exampleInputPassword1" />
+    <p className={credentials.password == "" ? "error" : "d-none"}>
+                Password Invalid !!</p>
   </div>
   <div className="mb-3 form-check">
     <input type="checkbox" className="form-check-input" id="exampleCheck1" />
