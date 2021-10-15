@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import ModalSignin from './ModalSignin'
 import Search from './Search'
-
+import ModalSignin from '../modals/ModalSignin'
 const Header = (props) => {
     return (
         <div>
@@ -30,7 +29,7 @@ const Header = (props) => {
      
    </div>
  </header>
- <ModalSignin/>
+ <ModalSignin />
         </div>
     )
 }

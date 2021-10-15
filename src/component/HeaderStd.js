@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import ModalSignin from './ModalSignin'
+import ModalSignin from '../modals/ModalSignin'
 
 const HeaderStd = () => {
     return (
